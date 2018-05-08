@@ -7,10 +7,12 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get('/', (req, res) => {
-    res.json({
-        message: 'Hello World'
-    });
+router.get('/', (req, res, next) => {
+    // res.json({
+    //     message: 'Hello World'
+    // });
+
+    next(new Error('Custom error'));
 });
 
 router.get('/params/:name', (req, res) => {
