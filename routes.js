@@ -1,6 +1,12 @@
 var express   = require('express');
 var router    = express.Router();
 
+router.use((req, res, next) => {
+    req.name = 'Iorgen';
+    console.log('Router Custom Middleware ' + req.name);
+    next();
+});
+
 router.get('/', (req, res) => {
     res.json({
         message: 'Hello World'

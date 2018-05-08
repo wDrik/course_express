@@ -7,7 +7,13 @@ var app         = express();
 var routes      = require('./routes');
 var bodyParser  = require('body-parser');
 
-app.get('/', function(req, res) {
+
+app.use((req, res, next) => {
+    console.log('Custom Middleware');
+    next();
+});
+
+app.get('/', (req, res) => {
     res.send('Hello world from express by SON');
 });
 
@@ -23,6 +29,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 //     console.log('Express started');
 // });
 
-app.listen(3000, function() {
+app.listen(3000, () => {
     console.log('Express started');
 });
