@@ -19,6 +19,13 @@ router.post('/body', (req, res) => {
     res.json(req.body);
 });
 
+router.get('/res', (req, res) => {
+    res.status(201).send({
+        name: 'Iorgen',
+        lastname: 'Silva'
+    });
+});
+
 // Accept 'a+r' or only 'r'
 router.get('/a?r', () => {
     res.send('router a?r');
